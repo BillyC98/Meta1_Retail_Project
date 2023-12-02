@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Webcam</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="./webcam.css">
+<link rel="stylesheet" href="./stylenav.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"
+        integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/async/3.2.0/async.min.js"
+        integrity="sha512-6K6+H87tLdCWvY5ml9ZQXLRlPlDEt8uXmtELhuJRgFyEDv6JvndWHg3jadJuBVGPEhhA2AAt+ROMC2V7EvTIWw=="
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.roboflow.com/0.2.26/roboflow.js"></script>
+    <script src="./webcam.js"></script>
+
+</head>
+
+<body>
+  <script src="https://kit.fontawesome.com/4c0061ce8f.js" crossorigin="anonymous"></script>
+ 
+<div class="dash">
+  <!-- HEADER -->
+  <header class="header">
+    <img src="logo.png" class="logo">
+    <div class="header__search">
+      <div class="header__search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <nav>
+      <ul>
+        <li id="menu">
+          <i class="fa-solid fa-bars"></i>
+          <p><a>Close Menu</a></p>
+        </li>
+        <li>
+          <i class="fa-solid fa-house"></i>
+          <p><a href="home.html">Home</a></p>
+        </li>
+        <li>
+          <i class="fa-solid fa-chart-simple"></i>
+          <p><a href="graph.html">Graph</a></p>
+        </li>
+        <li>
+          <i class="fa-solid fa-people-group"></i>
+          <p><a href="Profil.html">Profil</a></p>
+        </li>
+        <li>
+          <i class="fa-solid fa-circle-info"></i>
+          <p><a href="about.html">About</a></p>
+        </li>
+      </ul>
+    </nav>
+    </div>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- COL-1 -->
+      <div class="main__col-1">
+
+        <!-- LIST -->
+        <div class="main__list-heading-wrap">
+          <h2 class="main__list-heading dd-heading">Item Detected</h2>
+        </div>
+        <ul class="main__list">
+          <li class="main__list-item">
+            <div>
+              <p class="main__list-content">Blank</p>
+              <p class="main__list-sub">Bubur Instan</p>
+              <p>Astor</p>                
+              <p>Blank</p>
+              <p>Colgate</p>
+              <p>Dove</p>
+              <p>Indica</p>
+              <p>LUX Biru</p>
+              <p>LUX Pink</p>
+              <p>Lia jas</p>
+              <p>Lifeboy Kuning</p>
+              <p>Lifeboy Merah</p>
+              <p>Medimix</p>
+              <p>Medimix Besar</p>
+              <p>Odol</p>
+              <p>Pears Biru</p>
+              <p>Pears Hijau</p>
+              <p>Pears Kuning</p>
+              <p>Pepsodent Biru</p>
+              <p>Pepsodent Hijau</p>
+              <p>Pepsodent Merah<p>
+                  <a href="List_item_detected.labels" class="ss-show">Show all</a>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- COL-2 -->
+      <div class="main__col-2">
+
+        <!-- CARDS -->
+        <div class="main__cards-container">
+
+          <div class="main__cards-container-heading-wrap">
+            <h2 class="main__cards-container-heading ss-heading">Try With Webcam</h2>
+          </div>
+          <ul class="main__cards">
+            <div class="loading">
+                <video id="video" autoplay></video>
+                <div id="fps"></div>
+            </div>
+          </ul>
+
+          <div class="main__discover">
+            <div class="main__discover-heading-container">
+              <h3 class="main__discover-heading ss-heading">Management Inventory</h3>
+            </div>
+            <div id="labelbox">
+            </div>
+          </div>
+          <a href="https://wa.me/6282280791390?text=Barang%20Kosong%20Terdeteksi!!" target="_blank" class="btn">Report</a>
+        </div>
+        
+<!-- FOOTER -->
+<footer class="main__footer">
+    
+  <div class="main__info">
+    <a href="https://github.com/BillyC98/Retail_project.git" target="_blank" rel="noreferrer noopener" class="main__info-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github">
+        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+      </svg>
+    </a>
+
+    <p class="main__cp" style="font-size: 1.4rem; text-align: center; ">
+      <p style="font-size:1.7rem">Copyright &copy; Meta 1</p>
+   </p>
+
+    <p class="main__cr">
+      <img src="logo.png" alt="Retail Logo" height="80rem" width="80rem">
+      </a>
+    </p>
+  </div>
+
+</footer>
+
+      </div>
+
+    </main>
+
+  </div>
+
+</div>
+<script src="./nav.js"></script>
+</body>
+</html>

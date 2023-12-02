@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Inference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.9.6/tailwind.min.css'>
+<link rel="stylesheet" href="./inference.css">
+<link rel="stylesheet" href="./stylenav.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+
+<body>
+
+  <script src="https://kit.fontawesome.com/4c0061ce8f.js" crossorigin="anonymous"></script>
+
+<form id="inputForm">
+<div class="dash">
+
+  <!-- HEADER -->
+  <header class="header">
+    <img src="logo.png" class="logo">
+    <div class="header__search">
+      <div class="header__search-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <nav>
+      <ul>
+        <li id="menu">
+          <i class="fa-solid fa-bars"></i>
+          <p><a>Close Menu</a></p>
+        </li>
+        <li>
+          <i class="fa-solid fa-house"></i>
+          <p><a href="home.html">Home</a></p>
+        </li>
+        <li>
+          <i class="fa-solid fa-chart-simple"></i>
+          <p><a href="graph.html">Graph</a></p>
+        </li>
+        <li>
+          <i class="fa-solid fa-people-group"></i>
+          <p><a href="Profil.html">Profil</a></p>
+        </li>
+        <li>
+          <i class="fa-solid fa-circle-info"></i>
+          <p><a href="about.html">About</a></p>
+        </li>
+      </ul>
+    </nav>
+    </div>
+
+  
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- COL-1 -->
+      <div class="main__col-1">
+
+        <!-- HEADING -->
+        <div>
+          <h2 class="main__heading">
+
+            </span>Yolo v5</h2>
+          <p class="main__desc">
+            This is a detection camera development project using the yolo v5 algorithm which is used in the retail industry with the aim of providing a camera feature for detecting empty items in the storefront.</p>
+          <p class="main__sub"><span>Try With Webcam</span> <span> <a href="webcam.html" class="main__sub2">Click here</a></span></p>
+        </div>        
+      </div>
+
+      
+
+      <!-- COL-2 -->
+      <div class="main__col-2">
+
+        <!-- CARDS -->
+        <div class="main__cards-container">
+
+          <div class="main__cards-container-heading-wrap">
+            <h2 class="main__cards-container-heading ss-heading2">Inference Image</h2>
+          </div>
+
+          <ul class="main__cards">
+            <div class="header__grid">
+                <div>
+                <label class="header__label" for="model">Model</label>
+                <input class="input_model" type="text" id="model" />
+                </div>         
+                <div>
+                <label class="header__label" for="version">Version</label>
+                <input class="input_versi" type="number" id="version" />
+                </div>
+                <div>
+                <label class="header__label" for="api_key">API Key</label>
+                <input class="input_api" type="text" id="api_key" />
+                </div>
+            </div>
+            <div class="col-6-m3 relative">
+            <div>
+                <label class="input__label" for="overlap">Max Overlap</label>
+                <span class="icon">%</span>  
+	            <input type="number" id="overlap" value="50" max="100" accuracy="2" min="0" class="input__icon"/>
+            </div>
+            <div>
+		        <label class="input__label" for="confidence">Min Confidence</label>   
+                <span class="icon">%</span>            
+		        <input type="number" id="confidence" value="50" max="100" accuracy="2" min="0" class="input__icon2"/>
+            </div>
+            </div>
+            </ul>
+        </div>
+
+<!-- CROSSING -->
+<div class="main__crossing-container">
+    <div class="main__crossing-image">
+      <img src="https://images.unsplash.com/photo-1595064085577-7c2ef98ec311?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=70&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=70" alt="">
+    </div>
+    <div class="main__crossing-current">
+      <div class="col-12-s6-m4" id="method">
+          <label class="input__label">Upload Method</label>
+          <div>
+              <button data-value="upload" id="computerButton" class="bttn left fill active">Upload</button>
+              <button data-value="url" id="urlButton" class="bttn right fill">URL</button>
+          </div>
+      </div>
+
+      <div class="col-12-m8" id="fileSelectionContainer">
+          <label class="input__label" for="file">Select File</label>
+          <div class="flex">
+              <input class="input input--left flex-1" type="text" id="fileName" disabled />							
+              <button id="fileMock" class="bttn right2 active">Browse</button>
+          </div>
+          <input style="display: none;" type="file" id="file" />
+      </div>
+
+      <div class="col-12-m8" id="urlContainer">
+          <label class="input__label" for="file">Enter Image URL</label>
+          <div class="flex">
+              <input type="text" id="url" placeholder="https://path.to/your.jpg" class="input"/><br>
+          </div>
+      </div>
+    </div>
+  </div>
+
+       <!-- DISCOVER -->
+       <div class="main__discover">
+        <div class="main__discover-heading-container">
+          <h3 class="main__discover-heading ss-heading">Run Inference</h3>
+        </div>
+        <ul class="main__discover-places">
+          <li class="main__discover-place">
+        <div class="col-6-m3" id="format">
+          <label class="input__label7">Inference Result</label>
+          <div>
+              <button id="imageButton" data-value="image" class="bttn left fill active">Image</button>
+              <button id="jsonButton" data-value="json" class="bttn right fill">JSON</button>
+          </div>
+      </div>
+      <div class="col-12 content__grid" id="imageOptions">
+          <div class="col-12-s6-m4" id="stroke">
+              <label class="input__label7">Stroke Width</label>
+              <div>
+                  <button data-value="1" class="bttn left active">1px</button>
+                  <button data-value="2" class="bttn">2px</button>
+                  <button data-value="5" class="bttn">5px</button>
+                  <button data-value="10" class="bttn right">10px</button>
+              </div>
+          </div>
+          <div class="col-12-s6-m4" id="labels">
+              <label class="input__labels">Labels</label>
+              <div>
+                  <button class="bttn left active">Off</button>
+                  <button data-value="on" class="bttn right">On</button>
+              </div>
+          </div>
+      </div>    
+          </li>
+          <div class="col-12"> 
+            <button type="submit" value="Run Inference" class="bttn__primary">Run Inference</button>
+        </div>          
+        </ul>
+      </div>
+
+         <!-- LIST -->
+         <div class="result_wrap">
+            <div class="result" id="resultContainer">
+              <div class="result__header">
+                  <h3 class="headline">Result</h3>
+              </div>
+              <pre id="output" class="codeblock"> here is your json </pre>
+          </div>
+          </div>
+      </div>
+
+    </main>
+
+  </div>
+
+</div>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/async/3.2.0/async.min.js'></script><script  src="./inference.js"></script>
+<script  src="./nav.js"></script>
+</form>
+</body>
+</html>
