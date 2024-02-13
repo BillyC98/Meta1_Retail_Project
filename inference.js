@@ -1,5 +1,9 @@
 $(function() {
-	retrieveDefaultValuesFromLocalStorage();
+	//values pulled from query string
+	$('#model').val("crop-test-pqafd");
+	$('#version').val("1");
+	$('#api_key').val("zwy5i4Yp8A8yFRoUOhUd");
+
 	setupButtonListeners();
 });
 
@@ -20,27 +24,12 @@ var infer = function() {
 		};
 
 		$.ajax(settings).then(function(response) {
-			if(settings.format == "json") {
-				var pretty = $('<pre>');
-				var formatted = JSON.stringify(response, null, 4)
+			var pretty = $('<pre>');
+			var formatted = JSON.stringify(response, null, 4)
 
-				pretty.html(formatted);
-				$('#output').html("").append(pretty);
-				$('html').scrollTop(100000);
-			} else {
-				var arrayBufferView = new Uint8Array(response);
-				var blob = new Blob([arrayBufferView], {
-					'type': 'image\/jpeg'
-				});
-				var base64image = window.URL.createObjectURL(blob);
-
-				var img = $('<img/>');
-				img.get(0).onload = function() {
-					$('html').scrollTop(100000);
-				};
-				img.attr('src', base64image);
-				$('#output').html("").append(img);
-			}
+			pretty.html(formatted);
+			$('#output').html("").append(pretty);
+			$('html').scrollTop(100000);
 		});
 	});
 };
@@ -121,39 +110,12 @@ var getSettingsFromForm = function(cb) {
 	};
 
 	var parts = [
-		"https://detect.roboflow.com/",
+		"https://classify.roboflow.com/",
 		$('#model').val(),
 		"/",
 		$('#version').val(),
 		"?api_key=" + $('#api_key').val()
 	];
-
-	var classes = $('#classes').val();
-	if(classes) parts.push("&classes=" + classes);
-
-	var confidence = $('#confidence').val();
-	if(confidence) parts.push("&confidence=" + confidence);
-
-	var overlap = $('#overlap').val();
-	if(overlap) parts.push("&overlap=" + overlap);
-
-	var format = $('#format .active').attr('data-value');
-	parts.push("&format=" + format);
-	settings.format = format;
-
-	if(format == "image") {
-		var labels = $('#labels .active').attr('data-value');
-		if(labels) parts.push("&labels=on");
-
-		var stroke = $('#stroke .active').attr('data-value');
-		if(stroke) parts.push("&stroke=" + stroke);
-
-		settings.xhr = function() {
-			var override = new XMLHttpRequest();
-			override.responseType = 'arraybuffer';
-			return override;
-		}
-	}
 
 	var method = $('#method .active').attr('data-value');
 	if(method == "upload") {
@@ -180,16 +142,18 @@ var getSettingsFromForm = function(cb) {
 };
 
 var getBase64fromFile = function(file) {
-    return new Promise(function(resolve, reject) {
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function() {
-            resolve(reader.result);
-        };
-        reader.onerror = function(error) {
-            reject(error);
-        };
-    });
+	return new Promise(function(resolve, reject) {
+		var reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = function() {
+		resizeImage(reader.result).then(function(resizedImage){
+			resolve(resizedImage);
+		});
+    };
+		reader.onerror = function(error) {
+			reject(error);
+		};
+	});
 };
 
 var resizeImage = function(base64Str) {
@@ -219,6 +183,5 @@ var resizeImage = function(base64Str) {
 			ctx.drawImage(img, 0, 0, width, height);
 			resolve(canvas.toDataURL('image/jpeg', 1.0));  
 		};
-    
 	});	
 };
