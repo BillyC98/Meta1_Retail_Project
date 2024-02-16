@@ -23,10 +23,10 @@ $(function () {
             });
         });
 
-    var publishable_key = "rf_JLnNy7Dn7PYQl0jNZjKXZarJEGA2";
+    var publishable_key = "zwy5i4Yp8A8yFRoUOhUd";
     var toLoad = {
-        model: "retail-project-rtg1x",
-        version: 5
+        model: "final-project-0vx31/2",
+        version: 2
     };
 
     const loadModelPromise = new Promise(function (resolve, reject) {
